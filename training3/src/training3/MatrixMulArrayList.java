@@ -49,6 +49,7 @@ public class MatrixMulArrayList {
 			}
 			System.out.println(matrix1);
 			System.out.println(matrix2);
+			System.out.println("");
 			System.out.println(matrix3);
 
 		} else {

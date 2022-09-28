@@ -12,7 +12,7 @@ public class SortNames {
 		System.out.println("Enter ten names: ");
 
 		for (int i = 0; i <10; i++) {
-			names.add(s.next());
+			names.add(s.next().toLowerCase());
 			
 		}
 		Collections.sort(names);
