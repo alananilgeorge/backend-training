@@ -1,6 +1,7 @@
 package training3;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,10 +11,14 @@ public class StringPatternUsingRecursion {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter string pattern");
-		String str = new String(s.next());
-		pattern(str, 1);
-		res.forEach((i) -> System.out.print(i));
+		try {
+			String str = new String(s.next());
 
+			pattern(str, 1);
+			res.forEach((i) -> System.out.print(i));
+		} catch (InputMismatchException e) {
+			System.out.println("Input a string");
+		}
 	}
 
 	public static void pattern(String s, int num) {

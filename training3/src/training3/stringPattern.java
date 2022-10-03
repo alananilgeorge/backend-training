@@ -1,5 +1,6 @@
 package training3;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -8,8 +9,12 @@ public class stringPattern {
 		System.out.println("Enter String");
 		Scanner S = new Scanner(System.in);
 		String s = new String();
-		s = S.next();
-
+		try {
+			s = S.next();
+		}
+		catch(InputMismatchException e) {
+			System.out.println("Input mismatch");
+		}
 		Stack<Integer> nums = new Stack<>();
 		Stack<String> res = new Stack<>();
 
