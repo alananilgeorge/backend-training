@@ -13,8 +13,4 @@ public class BrandClass {
 	}
 
 
-	public static void main(String[] args) {
-		
-	}
-
 }
