@@ -1,6 +1,5 @@
 package models;
 
-import java.util.HashMap;
 
 public class Brand {
 	private String brandName = new String();
