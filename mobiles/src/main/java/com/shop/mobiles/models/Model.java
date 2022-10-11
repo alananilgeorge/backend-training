@@ -1,10 +1,11 @@
-package models;
+package com.shop.mobiles.models;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Model {
@@ -14,7 +15,9 @@ public class Model {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	private Long id;
+	
+	@ManyToOne
 	Brand brand;
 
 	public String getModelName() {
@@ -41,11 +44,11 @@ public class Model {
 		this.version = version;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

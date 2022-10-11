@@ -1,4 +1,4 @@
-package models;
+package com.shop.mobiles.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +9,10 @@ import javax.persistence.Id;
 public class Brand {
 	private String brandName = new String();
 	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private Long id;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-
 	public String getBrandName() {
 		return brandName;
 	}
@@ -20,14 +20,16 @@ public class Brand {
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+//
+//	public int getId() {
+//		return id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+	
+	
 
 
 }
