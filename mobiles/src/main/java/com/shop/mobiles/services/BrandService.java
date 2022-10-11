@@ -33,8 +33,8 @@ public class BrandService {
 
 	}
 	
-	public void delete(Brand brand) {
-		brandRepository.delete(brand);
+	public void delete(String name) {
+		brandRepository.deleteById(name);
 	}
 //	public List<Model> getModels(long id){
 //		return modelRepository.findAll().forEach(arg0);

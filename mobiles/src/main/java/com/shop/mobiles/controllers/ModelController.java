@@ -31,7 +31,7 @@ public class ModelController {
 
 	@Autowired
 	private BrandService brandService;
-	
+
 	@GetMapping()
 	public List<Model> listModels() {
 		return modelService.getModels();
@@ -41,28 +41,27 @@ public class ModelController {
 	public Model viewModel(@PathVariable("id") Long id) {
 		return modelService.getModel(id);
 	}
-	
+
 	@PostMapping("{name}")
 	@ResponseStatus(HttpStatus.OK)
-	public void createModel(@RequestBody Model model,@PathVariable("name") String name) throws NotFoundException {
-		if(brandService.getBrand(name)!=null) {
+	public void createModel(@RequestBody Model model, @PathVariable("name") String name) throws NotFoundException {
+		if (brandService.getBrand(name) != null) {
 			Brand brand = brandService.getBrand(name);
 			model.setBrand(brand);
 			modelService.setModel(model);
-		}
-		else {
+		} else {
 			throw new NotFoundException();
 		}
-		
+
 	}
 
 	@PutMapping("{id}")
 	public void update(@PathVariable("id") Long id, @Valid @RequestBody Model model) {
-		modelService.update(model);
+		modelService.update(model, id);
 	}
 
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") Long id, @Valid @RequestBody Model model) {
-		modelService.delete(model);
+	public void delete(@PathVariable("id") Long id) {
+		modelService.delete(id);
 	}
 }

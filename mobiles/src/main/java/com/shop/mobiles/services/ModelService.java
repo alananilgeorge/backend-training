@@ -28,13 +28,16 @@ public class ModelService {
 		return models;
 	}
 
-	public void update(Model model) {
+	public void update(Model model,Long id) {
+		model.setId(id);
+		Brand brand = modelRepository.getReferenceById(id).getBrand();
+		model.setBrand(brand);
 		modelRepository.save(model);
 
 	}
 
-	public void delete(Model model) {
-		modelRepository.delete(model);
+	public void delete(Long id) {
+		modelRepository.deleteById(id);
 	}
 	public List<Model> getModels(String name){
 		return modelRepository.findAllByBrandBrandName(name);

@@ -62,8 +62,8 @@ public class BrandController {
 		brandService.update(brand);
 	}
 
-	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") Long id, @Valid @RequestBody Brand brand) {
-		brandService.delete(brand);
+	@DeleteMapping("{name}")
+	public void delete(@PathVariable("name") String name) {
+		brandService.delete(name);
 	}
 }
