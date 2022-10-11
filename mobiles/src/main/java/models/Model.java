@@ -1,9 +1,19 @@
 package models;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Model {
 	String modelName = new String();
 	int price;
 	int version;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	Brand brand;
 

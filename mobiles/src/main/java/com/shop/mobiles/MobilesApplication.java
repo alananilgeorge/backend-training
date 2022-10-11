@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import controllers.MobileController;
+import controllers.BrandController;
+import controllers.ModelController;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses=MobileController.class)
+@ComponentScan(basePackageClasses= BrandController.class)
+@ComponentScan(basePackageClasses=ModelController.class)
 public class MobilesApplication {
 
 	public static void main(String[] args) {
