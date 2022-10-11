@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shop.mobiles.exceptions.ResourceNotFoundException;
 import com.shop.mobiles.models.Brand;
 import com.shop.mobiles.models.Model;
 import com.shop.mobiles.repositories.BrandRepository;
@@ -44,13 +45,14 @@ public class ModelController {
 
 	@PostMapping("{name}")
 	@ResponseStatus(HttpStatus.OK)
-	public void createModel(@RequestBody Model model, @PathVariable("name") String name) throws NotFoundException {
+	public void createModel(@RequestBody Model model, @PathVariable("name") String name)
+			throws ResourceNotFoundException {
 		if (brandService.getBrand(name) != null) {
 			Brand brand = brandService.getBrand(name);
 			model.setBrand(brand);
 			modelService.setModel(model);
 		} else {
-			throw new NotFoundException();
+			throw new ResourceNotFoundException();
 		}
 
 	}
