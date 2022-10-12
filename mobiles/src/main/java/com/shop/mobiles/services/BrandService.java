@@ -15,8 +15,8 @@ public class BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
 
-	public Brand getBrand(String name) {
-		return brandRepository.findById(name).orElse(null);
+	public Brand getBrand(Long id) {
+		return brandRepository.findById(id).orElse(null);
 	}
 
 	public void setBrand(Brand brand) {
@@ -28,13 +28,15 @@ public class BrandService {
 		return brands;
 	}
 
-	public void update(Brand brand) {
-		brandRepository.save(brand);
+	public void update(Brand brand, Long id) {
+		Brand br = brandRepository.getReferenceById(id);
+		br.setname(brand.getname());
+		brandRepository.save(br);
 
 	}
-	
-	public void delete(String name) {
-		brandRepository.deleteById(name);
+
+	public void delete(Long id) {
+		brandRepository.deleteById(id);
 	}
 //	public List<Model> getModels(long id){
 //		return modelRepository.findAll().forEach(arg0);

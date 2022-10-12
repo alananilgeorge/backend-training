@@ -41,14 +41,14 @@ public class BrandController {
 		return "aldnasdad";
 	}
 
-	@GetMapping("{name}")
-	public Brand getBrand(@PathVariable("name") String name) {
-		return brandService.getBrand(name);
+	@GetMapping("{id}")
+	public Brand getBrand(@PathVariable("id") Long id) {
+		return brandService.getBrand(id);
 	}
 
-	@GetMapping("{name}/models")
-	public List<Model> getModels(@PathVariable("name") String name){
-		return modelService.getModels(name);
+	@GetMapping("{id}/models")
+	public List<Model> getModels(@PathVariable("id") Long id){
+		return modelService.getModels(id);
 	}
 
 	@PostMapping("")
@@ -59,11 +59,11 @@ public class BrandController {
 
 	@PutMapping("{id}")
 	public void update(@PathVariable("id") Long id, @Valid @RequestBody Brand brand) {
-		brandService.update(brand);
+		brandService.update(brand,id);
 	}
 
-	@DeleteMapping("{name}")
-	public void delete(@PathVariable("name") String name) {
-		brandService.delete(name);
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable("id") Long id) {
+		brandService.delete(id);
 	}
 }

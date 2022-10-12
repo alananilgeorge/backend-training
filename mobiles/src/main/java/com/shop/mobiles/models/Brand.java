@@ -7,29 +7,26 @@ import javax.persistence.Id;
 
 @Entity
 public class Brand {
-	private String brandName = new String();
-	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Long id;
+	private String name;
+
 	@Id
-	public String getBrandName() {
-		return brandName;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	public String getname() {
+		return name;
 	}
 
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
+	public void setname(String name) {
+		this.name = name;
 	}
-//
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-	
-	
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

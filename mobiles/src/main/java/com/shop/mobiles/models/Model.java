@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Model {
-	String modelName = new String();
+	String modelName;
 	int price;
 	int version;
 	

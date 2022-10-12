@@ -9,5 +9,5 @@ import com.shop.mobiles.models.Model;
 
 @Repository
 public interface ModelRepository extends JpaRepository<Model, Long> {
-	public List<Model> findAllByBrandBrandName(String name);
+	public List<Model> findAllByBrandId(Long id);
 }

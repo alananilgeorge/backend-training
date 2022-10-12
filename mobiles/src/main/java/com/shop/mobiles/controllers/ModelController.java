@@ -43,12 +43,11 @@ public class ModelController {
 		return modelService.getModel(id);
 	}
 
-	@PostMapping("{name}")
+	@PostMapping("{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public void createModel(@RequestBody Model model, @PathVariable("name") String name)
-			throws ResourceNotFoundException {
-		if (brandService.getBrand(name) != null) {
-			Brand brand = brandService.getBrand(name);
+	public void createModel(@RequestBody Model model, @PathVariable("id") Long id) throws ResourceNotFoundException {
+		if (brandService.getBrand(id) != null) {
+			Brand brand = brandService.getBrand(id);
 			model.setBrand(brand);
 			modelService.setModel(model);
 		} else {

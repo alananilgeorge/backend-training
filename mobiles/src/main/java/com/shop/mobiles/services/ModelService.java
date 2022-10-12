@@ -28,7 +28,7 @@ public class ModelService {
 		return models;
 	}
 
-	public void update(Model model,Long id) {
+	public void update(Model model, Long id) {
 		model.setId(id);
 		Brand brand = modelRepository.getReferenceById(id).getBrand();
 		model.setBrand(brand);
@@ -39,7 +39,8 @@ public class ModelService {
 	public void delete(Long id) {
 		modelRepository.deleteById(id);
 	}
-	public List<Model> getModels(String name){
-		return modelRepository.findAllByBrandBrandName(name);
+
+	public List<Model> getModels(Long id) {
+		return modelRepository.findAllByBrandId(id);
 	}
 }
