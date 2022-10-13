@@ -1,5 +1,6 @@
 package com.shop.mobiles.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
 
-	public Brand getBrand(Long id) {
-		return brandRepository.findById(id).orElse(null);
+	public BrandDTO getBrand(Long id) {
+		return convert(brandRepository.findById(id).orElse(null));
 	}
 
 	public void setBrand(BrandDTO brandDTO) {
@@ -26,9 +27,11 @@ public class BrandService {
 		brandRepository.save(brand);
 	}
 
-	public List<Brand> getBrands() {
+	public List<BrandDTO> getBrands() {
 		List<Brand> brands = brandRepository.findAll();
-		return brands;
+		List<BrandDTO> brandDTOs = new ArrayList();
+		brands.forEach((brand) -> brandDTOs.add(convert(brand)));
+		return brandDTOs;
 	}
 
 	public void update(BrandDTO brandDTO, Long id) {
@@ -41,6 +44,13 @@ public class BrandService {
 	public void delete(Long id) {
 		brandRepository.deleteById(id);
 	}
+
+	public BrandDTO convert(Brand brand) {
+		BrandDTO brandDTO = new BrandDTO();
+		brandDTO.setName(brand.getname());
+		return brandDTO;
+	}
+
 //	public List<Model> getModels(long id){
 //		return modelRepository.findAll().forEach(arg0);
 //	}

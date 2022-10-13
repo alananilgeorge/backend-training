@@ -1,6 +1,7 @@
 package com.shop.mobiles.DTO;
 
 import com.shop.mobiles.models.Brand;
+import com.shop.mobiles.models.Model;
 
 public class ModelDTO {
 	String modelName;
@@ -47,5 +48,13 @@ public class ModelDTO {
 
 	public void setBrand(Brand brand) {
 		this.brand = brand;
+	}
+	public ModelDTO convert(Model model) {
+		ModelDTO modelDTO = new ModelDTO();
+		model.setModelName(modelDTO.getModelName());
+		model.setPrice(modelDTO.getPrice());
+		model.setBrand(modelDTO.getBrand());
+		model.setVersion(modelDTO.getVersion());
+		return modelDTO;
 	}
 }

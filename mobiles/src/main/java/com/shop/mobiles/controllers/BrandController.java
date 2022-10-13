@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.mobiles.DTO.BrandDTO;
+import com.shop.mobiles.DTO.ModelDTO;
 import com.shop.mobiles.models.Brand;
-import com.shop.mobiles.models.Model;
 import com.shop.mobiles.services.BrandService;
 import com.shop.mobiles.services.ModelService;
 
@@ -33,7 +33,7 @@ public class BrandController {
 	private ModelService modelService;
 
 	@GetMapping()
-	public List<Brand> listBrand() {
+	public List<BrandDTO> listBrand() {
 		return brandService.getBrands();
 	}
 
@@ -43,12 +43,12 @@ public class BrandController {
 	}
 
 	@GetMapping("{id}")
-	public Brand getBrand(@PathVariable("id") Long id) {
+	public BrandDTO getBrand(@PathVariable("id") Long id) {
 		return brandService.getBrand(id);
 	}
 
 	@GetMapping("{id}/models")
-	public List<Model> getModels(@PathVariable("id") Long id){
+	public List<ModelDTO> getModels(@PathVariable("id") Long id){
 		return modelService.getModels(id);
 	}
 

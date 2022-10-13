@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shop.mobiles.DTO.ModelDTO;
 import com.shop.mobiles.exceptions.ResourceNotFoundException;
 import com.shop.mobiles.models.Brand;
-import com.shop.mobiles.models.Model;
-import com.shop.mobiles.repositories.BrandRepository;
 import com.shop.mobiles.services.BrandService;
 import com.shop.mobiles.services.ModelService;
 
@@ -35,12 +32,12 @@ public class ModelController {
 	private BrandService brandService;
 
 	@GetMapping()
-	public List<Model> listModels() {
+	public List<ModelDTO> listModels() {
 		return modelService.getModels();
 	}
 
 	@GetMapping("{id}")
-	public Model viewModel(@PathVariable("id") Long id) {
+	public ModelDTO viewModel(@PathVariable("id") Long id) {
 		return modelService.getModel(id);
 	}
 
@@ -48,9 +45,7 @@ public class ModelController {
 	@ResponseStatus(HttpStatus.OK)
 	public void createModel(@RequestBody ModelDTO model, @PathVariable("id") Long id) throws ResourceNotFoundException {
 		if (brandService.getBrand(id) != null) {
-			Brand brand = brandService.getBrand(id);
-			model.setBrand(brand);
-			modelService.setModel(model);
+			modelService.setModel(model,id);
 		} else {
 			throw new ResourceNotFoundException();
 		}
