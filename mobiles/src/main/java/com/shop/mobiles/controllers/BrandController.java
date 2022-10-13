@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shop.mobiles.DTO.BrandDTO;
 import com.shop.mobiles.models.Brand;
 import com.shop.mobiles.models.Model;
 import com.shop.mobiles.services.BrandService;
@@ -53,12 +54,12 @@ public class BrandController {
 
 	@PostMapping("")
 	@ResponseStatus(HttpStatus.OK)
-	public void createBrand(@RequestBody Brand brand) {
+	public void createBrand(@RequestBody BrandDTO brand) {
 		brandService.setBrand(brand);
 	}
 
 	@PutMapping("{id}")
-	public void update(@PathVariable("id") Long id, @Valid @RequestBody Brand brand) {
+	public void update(@PathVariable("id") Long id, @Valid @RequestBody BrandDTO brand) {
 		brandService.update(brand,id);
 	}
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shop.mobiles.DTO.ModelDTO;
 import com.shop.mobiles.exceptions.ResourceNotFoundException;
 import com.shop.mobiles.models.Brand;
 import com.shop.mobiles.models.Model;
@@ -45,7 +46,7 @@ public class ModelController {
 
 	@PostMapping("{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public void createModel(@RequestBody Model model, @PathVariable("id") Long id) throws ResourceNotFoundException {
+	public void createModel(@RequestBody ModelDTO model, @PathVariable("id") Long id) throws ResourceNotFoundException {
 		if (brandService.getBrand(id) != null) {
 			Brand brand = brandService.getBrand(id);
 			model.setBrand(brand);
@@ -57,7 +58,7 @@ public class ModelController {
 	}
 
 	@PutMapping("{id}")
-	public void update(@PathVariable("id") Long id, @Valid @RequestBody Model model) {
+	public void update(@PathVariable("id") Long id, @Valid @RequestBody ModelDTO model) {
 		modelService.update(model, id);
 	}
 

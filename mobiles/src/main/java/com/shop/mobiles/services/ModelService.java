@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shop.mobiles.DTO.ModelDTO;
 import com.shop.mobiles.models.Brand;
 import com.shop.mobiles.models.Model;
 import com.shop.mobiles.repositories.ModelRepository;
@@ -19,7 +20,12 @@ public class ModelService {
 		return modelRepository.findById(id).orElse(null);
 	}
 
-	public void setModel(Model model) {
+	public void setModel(ModelDTO modelDTO) {
+		Model model = new Model();
+		model.setModelName(modelDTO.getModelName());
+		model.setPrice(modelDTO.getPrice());
+		model.setBrand(modelDTO.getBrand());
+		model.setVersion(modelDTO.getVersion());
 		modelRepository.save(model);
 	}
 
@@ -28,10 +34,12 @@ public class ModelService {
 		return models;
 	}
 
-	public void update(Model model, Long id) {
-		model.setId(id);
-		Brand brand = modelRepository.getReferenceById(id).getBrand();
-		model.setBrand(brand);
+	public void update(ModelDTO modelDTO, Long id) {
+		Model model = modelRepository.getReferenceById(id);
+		model.setModelName(modelDTO.getModelName());
+		model.setPrice(modelDTO.getPrice());
+		model.setBrand(modelDTO.getBrand());
+		model.setVersion(modelDTO.getVersion());
 		modelRepository.save(model);
 
 	}
